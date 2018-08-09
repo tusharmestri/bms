@@ -27,7 +27,7 @@ function ($scope, ApiCall, $rootScope, $state, $stateParams, $timeout, myStorage
         $rootScope.Loder = false;
     };
     //=================================================================================================
-    $scope.getProduct_moviesList = function (pageNum) {
+    $scope.getProduct_moviesList = function () {
       
 
         $http({
@@ -35,11 +35,7 @@ function ($scope, ApiCall, $rootScope, $state, $stateParams, $timeout, myStorage
             url: "https://api.themoviedb.org/3/movie/" + $scope.setMovideCode + "?api_key=fe7695a425f8c62b446aea15cd9ea173&language=en-US"
         }).then(function mySuccess(response) {
             $scope.get_ListMovies = response.data;
-           
-
-
-
-        });
+           });
 
         $http({
             method: "GET",
@@ -64,19 +60,28 @@ function ($scope, ApiCall, $rootScope, $state, $stateParams, $timeout, myStorage
         });
     }
 
-    $scope.getProduct_tvshowsList = function (pageNum) {
+    $scope.getProduct_tvshowsList = function () {
       
     
 
         $http({
             method: "GET",
 
-            url: "http://api.themoviedb.org/3/discover/tv?api_key=fe7695a425f8c62b446aea15cd9ea173&page=" + $scope.pageNum + "&sort_by=popularity.desc"
+            url: "https://api.themoviedb.org/3/tv/" + $scope.setMovideCode + "?api_key=fe7695a425f8c62b446aea15cd9ea173&language=en-US"
         }).then(function mySuccess(response) {
-            $scope.get_ListTvshows = response.data.results;
-            $scope.TotalPage = response.data.total_pages;
+            $scope.get_ListTvshows = response.data;
+            
 
-            $scope.CurrentPage = response.data.page;
+
+
+        });
+
+        $http({
+            method: "GET",
+            url: "https://api.themoviedb.org/3/tv/" + $scope.setMovideCode + "/similar?api_key=fe7695a425f8c62b446aea15cd9ea173&language=en-US&page=1"
+        }).then(function mySuccess(response) {
+            $scope.get_ListSimilarTvshows = response.data.results;
+
 
 
 

@@ -1,102 +1,214 @@
 ﻿<div ng-controller="productZoomController" ng-init="init()">
 
+    <div ng-show="get_ListMovies != null">
+        <div class="page-title bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 ">
+                        <h1 class="mb-0" style="font-size: 2.75rem;"><strong>{{get_ListMovies.original_title}}</strong> &nbsp;({{get_ListMovies.release_date | date:'yyyy'}})</h1>
 
-    <div class="page-title bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 ">
-                    <h1 class="mb-0" style="font-size: 2.75rem;"><strong>{{get_ListMovies.original_title}}</strong> &nbsp;({{get_ListMovies.release_date | date:'yyyy'}})</h1>
-                    
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br />
+        <br />
 
-    <section class="section section-bg-edge">
-        
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div>
-                        <img class="" ng-src="{{ImageBaseServer}}w300_and_h450_bestv2/{{get_ListMovies.poster_path}}" />
+        <section class="section section-bg-edge">
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div>
+                            <img class="" ng-src="{{ImageBaseServer}}w300_and_h450_bestv2/{{get_ListMovies.poster_path}}" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="container col-lg-8">
+                        <h2 style="font-size: 2rem;"> {{get_ListMovies.tagline}} </h2>
+                        <div class="row col-lg-12">
+                            <span><strong>OverView</strong><br /></span>
+                            <p>{{get_ListMovies.overview}}</p>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <span><strong>Genres</strong></span>
+                                <ul>
+                                    <li ng-repeat="data in get_ListMovies.genres">{{data.name}}</li>
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <span><strong>User Score</strong></span>
+                                <p>
+                                    {{get_ListMovies.vote_average * 10}} %
+                                </p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <span><strong>Homepage</strong></span>
+                                <a ng-href="{{get_ListMovies.homepage}}" target="_blank">{{get_ListMovies.homepage}}</a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <span><strong>Budget</strong></span>
+                                <p>{{get_ListMovies.budget | currency }}</p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <span><strong>Revenue</strong></span>
+                                <p>{{get_ListMovies.revenue | currency}}</p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <span><strong>Status</strong></span>
+                                <p>{{get_ListMovies.status}} On {{get_ListMovies.release_date | date:'MMMM d, y'}}</p>
+                            </div>
+                        </div>
+
+                        
+
+
+
+
+
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="col-md-12" ng-hide="get_ListSimilarMovies == null">
+                <span><strong>Similer Type</strong></span><br />
+                <hr />
+                <div class="row">
+                    <div ng-repeat="simliarData in get_ListSimilarMovies">
+                        <p style="cursor:pointer;" ui-sref="singleData({segmentid: 'movies',dataID:simliarData.id})">{{simliarData.title}}</p>
                     </div>
                 </div>
 
+
+            </div>
+        </section>
+
+        
+    </div>
+
+
+    <div ng-show="get_ListTvshows != null">
+        <div class="page-title bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 ">
+                        <h1 class="mb-0" style="font-size: 2.75rem;"><strong>{{get_ListTvshows.original_name}}</strong> 
+                        &nbsp;({{get_ListTvshows.first_air_date | date:'yyyy'}})</h1>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <section class="section section-bg-edge">
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div>
+                            <img class="" ng-src="{{ImageBaseServer}}w300_and_h450_bestv2/{{get_ListTvshows.poster_path}}" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="container col-lg-8">
+                        <h2 style="font-size: 2rem;"> {{get_ListTvshows.tagline}} </h2>
+                        <div class="row col-lg-12">
+                            <span><strong>OverView</strong><br /></span>
+                            <p>{{get_ListTvshows.overview}}</p>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <span><strong>Genres</strong></span>
+                                <ul>
+                                    <li ng-repeat="data in get_ListTvshows.genres">{{data.name}}</li>
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <span><strong>User Score</strong></span>
+                                <p>
+                                    {{get_ListTvshows.vote_average * 10}} %
+                                </p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <span><strong>Homepage</strong></span>
+                                <a ng-href="{{get_ListTvshows.homepage}}" target="_blank">{{get_ListTvshows.homepage}}</a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <span><strong>Number Of Seasons</strong></span>
+                                <p>{{get_ListTvshows.number_of_seasons}}</p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <span><strong>Number Of Episodes</strong></span>
+                                <p>{{get_ListTvshows.number_of_episodes }}</p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <span><strong>Status</strong></span>
+                                <p>{{get_ListTvshows.status}}</p>
+                            </div>
+                        </div>
+
+                      
+
+
+
+
+
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="col-md-12" ng-hide="get_ListSimilarTvshows == null">
+                <span><strong>Similer Type</strong></span><br />
+                <hr/>
+                <div class="row">
+                    <div ng-repeat="simliarData in get_ListSimilarTvshows">
+                        <p style="cursor:pointer;" ui-sref="singleData({segmentid: 'tvshows',dataID:simliarData.id})">{{simliarData.original_name}} &nbsp;&nbsp;</p>
+                    </div>
+                </div>
                 
 
-                <div class="container col-lg-8">
-                    <h2 style="font-size: 2rem;"> {{get_ListMovies.tagline}} </h2>
-                    <div class="row col-lg-12">
-                        <span><strong>OverView</strong><br /></span>
-                        <p>{{get_ListMovies.overview}}</p>
-                    </div>
-
-                   
-                   
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span><strong>Genres</strong></span>
-                            <ul>
-                                <li ng-repeat="data in get_ListMovies.genres">{{data.name}}</li>
-                            </ul>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <span><strong>User Score</strong></span>
-                            <p>
-                                {{get_ListMovies.vote_average * 10}} %
-                            </p>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <span><strong>Homepage</strong></span>
-                            <a ng-href="{{get_ListMovies.homepage}}" target="_blank">{{get_ListMovies.homepage}}</a>
-                        </div>
-                    </div>
-                        
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span><strong>Budget</strong></span>
-                            <p>{{get_ListMovies.budget | currency }}</p>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <span><strong>Revenue</strong></span>
-                            <p>{{get_ListMovies.revenue | currency}}</p>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <span><strong>Status</strong></span>
-                            <p>{{get_ListMovies.status}} On {{get_ListMovies.release_date | date:'MMMM d, y'}}</p>
-                        </div>
-                    </div>
-                        
-                    <div class="row">
-                        <span>Similer Type</span><br />
-                        <div class="col-lg-2" ng-repeat="simliarData in get_ListSimilarMovies">
-                            <p ui-sref ="singleData({segmentid: 'movies',dataID:simliarData.id})">{{simliarData.title}}</p>
-                        </div>
-
-                    </div>
-                            
-                            
-
-                       
-
-                       
-                   
-
-                </div>
-
             </div>
+        </section>
 
 
-        </div>
-    </section>
-
-    <br />
-
+    </div>
 
    
 </div>

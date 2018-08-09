@@ -83,7 +83,7 @@
                                 <div class="col-lg-3 col-3 " ng-repeat="Product in getSpecialOff | limitTo: 3">
                                     <!-- Menu Item -->
                                     <div class="menu-item  product-sample menu-grid-item">
-                                        <div class="imageBook">
+                                        <div class="imageBook" ui-sref="singleData({segmentid: 'movies',dataID:Product.id})" style="cursor:pointer">
                                             <!-- ng-repeat -->
                                             <div ng-click="productClick(Product.ProductCode)">
                                                 <img class="mb-4 image" ng-src="{{ImageBaseServer}}w370_and_h556_bestv2/{{Product.poster_path}}" alt="{{Product.title}}" href="#">
@@ -148,7 +148,7 @@
                                 <div class="col-lg-3 col-3 " ng-repeat="Product in getTvSer | limitTo: 3">
                                     <!-- Menu Item -->
                                     <div class="menu-item  product-sample menu-grid-item">
-                                        <div class="imageBook">
+                                        <div class="imageBook"ui-sref="singleData({segmentid: 'tvshows',dataID:Product.id})" style="cursor:pointer">
                                             <!-- ng-repeat -->
                                             <div ng-click="productClick(Product.ProductCode)">
                                                 <img class="mb-4 image" ng-src="{{ImageBaseServer}}w370_and_h556_bestv2/{{Product.poster_path}}" alt="{{Product.title}}" href="#">
@@ -224,7 +224,7 @@
                                     
 
                                 </ul>
-                                <a ng-click="menuDetailPage(data.id)" href="#" class="btn btn-outline-primary">
+                                <a ui-sref="singleData({segmentid: 'movies',dataID:data.id})" class="btn btn-outline-primary">
                                     <span>Know More</span>
 
                                 </a>
