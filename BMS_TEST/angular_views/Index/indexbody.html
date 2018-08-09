@@ -1,0 +1,245 @@
+﻿
+
+
+<div ng-controller="indexBodyController" ng-init="init()">
+
+ 
+
+
+         
+
+
+
+
+    <section class="section section-main section-main-1 bg-light">
+
+        <div class="container dark">
+           
+                <div class="slide-container">
+                    
+                        <div id="" class="image inner-controls">
+                            
+
+                                <div class="slide">
+                                    <div class="bg-image">
+                                        <slick class="slider" settings="slickConfig2" ng-if="slickConfig2Loaded">
+                                            <div  ng-repeat="data in getImagesData" index="{{$index}}">
+                                                <img ng-src="{{ImageBaseServer}}original/{{data.bgPosterName}}">
+                                            </div>
+                                            
+
+                                            </slick>
+</div>
+                                </div>
+                        
+
+
+
+                     </div>
+
+
+                        <div class="content dark">
+                            <slick class="slider" settings="slickConfig3" ng-if="slickConfig3Loaded">
+                                <div id="" ng-repeat="data in getImagesData" index="{{$index}}">
+
+
+                                    <div class="content-inner">
+                                        <h1>{{data.title}}</h1>
+                                       
+                                        <div class="btn btn-outline-primary btn-lg"><span>{{data.release_date | date: 'dd MMM'}}</span></div>
+                                       
+                                    </div>
+                                </div>
+                            </slick>
+                                <nav class="content-nav">
+                                    <a class="prev" href="#" ng-click="slickConfig3.method.slickPrev()"><i class="ti-arrow-left"></i></a>
+                                    <a class="next" href="#" ng-click="slickConfig3.method.slickNext()"><i class="ti-arrow-right"></i></a>
+                                </nav>
+                                
+</div>
+                    
+                    </div>
+               
+        </div>
+
+    </section>
+
+    <div class="page-content">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <!-- Menu Navigation -->
+                    
+                </div>
+
+                <div class="col-md-9">
+                    <!-- Menu Category / Burgers -->
+                    <div id="Burgers" class="menu-category">
+
+
+                        <div class="menu-category-content padded">
+                            <div class="row gutters-sm"> 
+                                <span class="text-muted"><strong>Movies</strong> </span>
+                                <div class="col-lg-3 col-3 " ng-repeat="Product in getSpecialOff | limitTo: 3">
+                                    <!-- Menu Item -->
+                                    <div class="menu-item  product-sample menu-grid-item">
+                                        <div class="imageBook">
+                                            <!-- ng-repeat -->
+                                            <div ng-click="productClick(Product.ProductCode)">
+                                                <img class="mb-4 image" ng-src="{{ImageBaseServer}}w370_and_h556_bestv2/{{Product.poster_path}}" alt="{{Product.title}}" href="#">
+                                            </div>
+                                            <h6 class="mb-0">{{Product.title}}</h6>
+                                            
+                                            <div class="row align-items-center mt-4">
+                                                <div class="col-sm-12">
+                                                    <span class="text-md mr-4">
+                                                        <span class="text-muted">
+                                                            <img src="../../assets/img/screens/heart.png" 
+                                                                 style="width:20px;height:20px"/> &nbsp;
+                                                            {{Product.vote_average}} %
+                                                            
+                                                        </span>
+                                                        <span class="text-muted" ng-if="Product.adult == true"> A </span>
+                                                          
+                                                        <span class="text-muted" ng-if="Product.adult == false"> U/A </span>
+                                                        </span>
+                                                    <span class="text-muted"></span>
+                                                </div>
+
+
+                                            </div>
+                                            <br />
+                                            
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <a ui-sref ="movies({segmentid: 'movies'})"> View All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Menu Category / Pasta -->
+
+                </div>
+
+                
+
+                
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <!-- Menu Navigation -->
+
+                </div>
+
+                <div class="col-md-9">
+                    <!-- Menu Category / Burgers -->
+                    <div id="Burgers" class="menu-category">
+
+
+                        <div class="menu-category-content padded">
+                            <div class="row gutters-sm">
+                                <span class="text-muted"><strong>Tv Serials</strong> </span>
+                                <div class="col-lg-3 col-3 " ng-repeat="Product in getTvSer | limitTo: 3">
+                                    <!-- Menu Item -->
+                                    <div class="menu-item  product-sample menu-grid-item">
+                                        <div class="imageBook">
+                                            <!-- ng-repeat -->
+                                            <div ng-click="productClick(Product.ProductCode)">
+                                                <img class="mb-4 image" ng-src="{{ImageBaseServer}}w370_and_h556_bestv2/{{Product.poster_path}}" alt="{{Product.title}}" href="#">
+                                            </div>
+                                            <h6 class="mb-0">{{Product.original_name}}</h6>
+
+                                            <div class="row align-items-center mt-4">
+                                                <div class="col-sm-12">
+                                                    <span class="text-md mr-4">
+                                                        <span class="text-muted">
+                                                            <img src="../../assets/img/screens/heart.png"
+                                                                 style="width:20px;height:20px" /> &nbsp;
+                                                            {{Product.vote_average}} %
+
+                                                        </span>
+                                                        <span class="text-muted"> votes {{Product.vote_count}} </span>
+
+                                                     
+                                                    </span>
+                                                    <span class="text-muted">{{Product.first_air_date | date :'MMMM d, y' }}</span>
+                                                </div>
+
+
+                                            </div>
+                                            <br />
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <a ui-sref="movies({segmentid: 'tvshows'})"> View All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Menu Category / Pasta -->
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+        
+    </div>
+
+    
+
+    <!-- Section - Offers -->
+    <section class="section bg-light">
+        <div class="container">
+            <h1 class="text-center mb-6">Now Playing</h1>
+
+            <div class="special-offer">
+                <slick class="slider" settings="slickConfig4" ng-if="slickConfig4Loaded">
+                    <div class="carousel" ng-repeat="data in getSpecialOff track by $index">
+                        <div class="special-offer">
+                            <img ng-src="{{posterSliderUrl}}w500/{{data.poster_path}}" style="height:30%;width:40%" alt="" class="special-offer-image" />
+                            <div class="special-offer-content">
+                                <h2 class="mb-2">{{data.title}}</h2>
+                                <h5 class="text-muted mb-5">{{data.overview}} </h5><p>Realase Date : {{data.release_date | date: 'dd MMM' }}</p>
+                                <ul class="text-lg mb-0">
+                                    <li ng-if="data.adult == true"><b>Popularity :</b> {{data.popularity | number : 2}}  <b>A</b>  </li>
+                                    <li ng-if="data.adult == false"><b>Popularity :</b> {{data.popularity | number : 2}} <b>U/A</b>  </li>
+                                    <li ng-if="data.adult == false"> {{data.vote_average}} %  | votes : {{data.vote_count}}  </li>
+                                    
+                                        
+
+                                    
+
+                                </ul>
+                                <a ng-click="menuDetailPage(data.id)" href="#" class="btn btn-outline-primary">
+                                    <span>Know More</span>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </slick>
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+</div>

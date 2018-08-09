@@ -1,0 +1,109 @@
+﻿/*---- loader ----*/
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+.loader-wrapper {
+	width: 100%;
+	height: 100%;
+	-webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+	transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+	background-color: #fff;
+	left: 0;
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+}
+
+.loaded .loader-wrapper {
+	-webkit-opacity: 0;
+	-khtml-opacity: 0;
+	-moz-opacity: 0;
+	opacity: 0;
+	-ms-filter: progid: DXImageTransform.Microsoft.Alpha(opacity=0);
+	filter: alpha(opacity=0);
+	z-index: -1;
+}
+
+.no-loading .loader-wrapper {
+	display: none;
+}
+
+.loader {
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+	border: 3px solid transparent;
+	border-top-color: #3498db;
+	display: block;
+	left: 50%;
+	margin: -75px 0 0 -75px;
+	position: relative;
+	top: 50%;
+	z-index: 100;
+}
+
+.loader:before,
+.loader:after {
+	border-radius: 50%;
+	border: 3px solid transparent;
+	content: "";
+	position: absolute;
+}
+
+.loader:before {
+	-webkit-animation: spin 3s linear infinite;
+	animation: spin 3s linear infinite;
+	border-top-color: #e74c3c;
+	bottom: 5px;
+	left: 5px;
+	right: 5px;
+	top: 5px;
+}
+
+.loader:after {
+	-webkit-animation: spin 1.5s linear infinite;
+	animation: spin 1.5s linear infinite;
+	border-top-color: #f8c41d;
+	bottom: 15px;
+	left: 15px;
+	right: 15px;
+	top: 15px;
+}
+
+.loaded .loader {
+	-webkit-opacity: 0;
+	-khtml-opacity: 0;
+	-moz-opacity: 0;
+	opacity: 0;
+	-ms-filter: progid: DXImageTransform.Microsoft.Alpha(opacity=0);
+	filter: alpha(opacity=0);
+	-webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+

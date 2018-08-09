@@ -1,0 +1,163 @@
+﻿<div ng-controller="productController" ng-init="init()">
+
+    <div class="page-title zooming">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 push-lg-4">
+                    <h1 class="mb-0" style="color:black;">{{setName}}</h1>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="hr-sm">
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="container">
+            <div class="row no-gutters">
+
+                <div class="col-md-12">
+                    <!-- Menu Category / Burgers -->
+                    <div id="Burgers" class="menu-category">
+
+
+                        <div class="menu-category-content padded">
+                            <div class="row gutters-sm" ng-show="get_ListMovies != null">
+                                <div class="col-lg-4 col-6" ng-repeat="data in get_ListMovies">
+                                    <!-- Menu Item -->
+                                    <div class="menu-item  product-sample menu-grid-item">
+                                        <div>
+                                            <!-- ng-repeat -->
+                                            <div>
+                                                <img class="mb-4 image" ng-src="{{ImageBaseServer}}w185_and_h278_bestv2/{{data.poster_path}}" alt="{{data.title}}" href="#">
+                                            </div>
+                                            <h6 class="mb-0">{{data.title}}</h6>
+                                            
+                                            <div class="row align-items-center mt-4">
+                                                <div class="col-sm-12">
+                                                    <span class="text-md mr-4">
+                                                        <span class="text-muted">
+                                                            <img src="../../assets/img/screens/heart.png"
+                                                                 style="width:20px;height:20px" /> &nbsp;
+                                                            {{data.vote_average * 10}} %
+
+                                                        </span>
+                                                        <span class="text-muted" ng-if="data.adult == true"> A </span>
+
+                                                        <span class="text-muted" ng-if="data.adult == false"> U/A </span>
+                                                    </span>
+                                                    <span class="text-muted">Relase Date:  <strong>{{data.release_date |date :'MMMM d, y'}}</strong></span>
+                                                </div>
+
+
+                                            </div>
+                                            <br/>
+                                            <div class="row">
+                                                <div style="text-align:center;">
+                                                    <a ui-sref ="singleData({segmentid: 'movies',dataID:data.id})"  class="btn btn-outline-secondary btn-sm">
+                                                        <span> More Info</span>
+                                                    </a>
+                                                </div>
+
+                                                
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="row gutters-sm" ng-show="get_ListTvshows != null">
+                                <div class="col-lg-4 col-6" ng-repeat="data in get_ListTvshows">
+                                    <!-- Menu Item -->
+                                    <div class="menu-item  product-sample menu-grid-item">
+                                        <div>
+                                            <!-- ng-repeat -->
+                                            <div>
+                                                <img class="mb-4 image" ng-src="{{posterSliderUrl}}w185_and_h278_bestv2/{{data.poster_path}}" alt="{{data.original_name}}" href="#">
+                                            </div>
+                                            <h6 class="mb-0">{{data.original_name}}</h6>
+
+                                            <div class="row align-items-center mt-4">
+                                                <div class="col-sm-12">
+                                                    <span class="text-md mr-4">
+                                                        <span class="text-muted">
+                                                            <img src="../../assets/img/screens/heart.png"
+                                                                 style="width:20px;height:20px" /> &nbsp;
+                                                            {{data.vote_average * 10}} %
+
+                                                        </span>
+                                                        
+                                                    </span>
+                                                    <span class="text-muted">  <strong>{{data.first_air_date |date :'MMMM d, y'}}</strong></span>
+                                                </div>
+
+
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div style="text-align:center;">
+                                                    <button class="btn btn-outline-secondary btn-sm">
+                                                        <span> More Info</span>
+                                                    </button>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+                        <ul class="pagination">
+                            <li class="page-item" ng-hide="pageNumNext <= 1">
+                               
+                                <button class="btn  btn-sm" ng-click="pagePrv()">
+                                    <span> Previous</span>
+                                </button>
+                            </li>
+                           
+                            <li class="page-item" ng-hide="pageNumNext >= TotalPage">
+                               
+                                <button class="btn  btn-sm" ng-click="pageNext()">
+                                    <span> Next</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Menu Category / Pasta -->
+
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+
+
+   
+
+
+    
+
+    
+</div>
+
+
+ 
